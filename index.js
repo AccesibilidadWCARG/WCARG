@@ -3,6 +3,17 @@ const isAccesible = require("./util/accesibilityUtil.js")
 const wcag = require("./util/wcagArgentina")
 const errorMessages = require("./util/errorMessageUtil")
 
+var text = process.argv[2];
+
+//let text = "https://www.eventbrite.com/ ,https://www.ole.com.ar/";
+const myArray = text.split(",");
+console.log(myArray)
+
+console.log(myArray[1])
+
+console.log(myArray[0])
+
+var URL = myArray[0];
 
 const optionsAA = {
         standard: 'WCAG2AA',
@@ -35,8 +46,8 @@ let mapOfErrors = new Map();
 let mapOfErrorMessages = new Map();
 
 
-const resultsAA = await pally ('https://www.eventbrite.com/',optionsAA);
-const resultsA = await pally ('https://www.eventbrite.com/',optionsA);
+const resultsAA = await pally (myArray[0],optionsAA);
+const resultsA = await pally (myArray[0],optionsA);
 
 resultsAA.issues.forEach(element => {
         let code = element.code.substring(0,37);
