@@ -46,8 +46,8 @@ let mapOfErrors = new Map();
 let mapOfErrorMessages = new Map();
 
 
-const resultsAA = await pally (myArray[0],optionsAA);
-const resultsA = await pally (myArray[0],optionsA);
+const resultsAA = await pally (URL,optionsAA);
+const resultsA = await pally (URL,optionsA);
 
 resultsAA.issues.forEach(element => {
         let code = element.code.substring(0,37);
