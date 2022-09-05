@@ -5,15 +5,9 @@ const errorMessages = require("./util/errorMessageUtil")
 
 var text = process.argv[2];
 
-//let text = "https://www.eventbrite.com/ ,https://www.ole.com.ar/";
+//let text = "https://www.eventbrite.com/ ,https://www.musimundo.com/";
 const myArray = text.split(",");
-console.log(myArray)
 
-console.log(myArray[1])
-
-console.log(myArray[0])
-
-var URL = myArray[0];
 
 const optionsAA = {
         standard: 'WCAG2AA',
@@ -45,6 +39,9 @@ let selectedErrors = [];
 let mapOfErrors = new Map();
 let mapOfErrorMessages = new Map();
 
+for (let i = 0; i < myArray.length; i++) {
+        console.log(myArray[i])       
+        var URL = myArray[i];
 
 const resultsAA = await pally (URL,optionsAA);
 const resultsA = await pally (URL,optionsA);
@@ -71,6 +68,8 @@ let pageUrl  = resultsAA.pageUrl;
 console.log(pageUrl)
 
 isAccesible.isAccesible(pageUrl,selectedErrors,mapOfErrorMessages);
+
+}
 
 }
 
