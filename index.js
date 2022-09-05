@@ -40,7 +40,7 @@ let mapOfErrors = new Map();
 let mapOfErrorMessages = new Map();
 
 for (let i = 0; i < myArray.length; i++) {
-        console.log(myArray[i])       
+        console.log("URL es :" + myArray[i])       
         var URL = myArray[i];
 
 const resultsAA = await pally (URL,optionsAA);
