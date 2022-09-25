@@ -1,4 +1,4 @@
-class WcagArgentina{
+class WCARGArgentina {
 
     static wcagSet = new Set(        [
         "WCAG2A.Principle1.Guideline1_1.1_1_1",
@@ -41,10 +41,10 @@ class WcagArgentina{
         "WCAG2A.Principle4.Guideline4_1.4_1_2"]);
 
     static  containsWcag(wcagEntry){
-        return WcagArgentina.wcagSet.has(wcagEntry);
+        return WCARGArgentina.wcagSet.has(wcagEntry);
     }
 
 }
 module.exports = {
-    "containsWcag":WcagArgentina.containsWcag
+    "containsWcag":WCARGArgentina.containsWcag
 }

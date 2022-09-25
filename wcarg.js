@@ -1,78 +1,39 @@
-const pally = require('pa11y')
-const isAccesible = require("./util/accesibilityUtil.js")
-const wcag = require("./util/wcagArgentina")
-const errorMessages = require("./util/errorMessageUtil")
-
-var text = process.argv[2];
-
-//let text = "https://www.eventbrite.com/ ,https://www.musimundo.com/";
-const myArray = text.split(",");
+const accesibility = require("./utils/accesibility.js");
+const wcag = require("./constants/WCARGArgentina");
+const errorMessages = require("./utils/errorMessage");
+const WCAGExecutor = require("./utils/WCAGExecutor")
+const WCARGProcessing = require("./utils/WCARGProcessing");
 
 
-const optionsAA = {
-        standard: 'WCAG2AA',
-        includeNotices: false,
-        includeWarnings: false,
-        wait: 3000,
-        log: {
-                debug: console.log,
-                error: console.error,
-                info: console.log
-        }
-};
 
-const optionsA = {
-        standard: 'WCAG2A',
-        includeNotices: false,
-        includeWarnings: false,
-        wait: 3000,
-        log: {
-                debug: console.log,
-                error: console.error,
-                info: console.log
-        }
-};
 
 async function run() {
+    let urlsList = process.argv[2];
+    let urls = urlsList.split(",");
 
-let selectedErrors = [];
-let mapOfErrors = new Map();
-let mapOfErrorMessages = new Map();
+    let results = []
 
-for (let i = 0; i < myArray.length; i++) {
-        console.log("URL es :" + myArray[i])       
-        var URL = myArray[i];
+    for (let urlIndex = 0; urlIndex < urls.length; urlIndex++) {
+        let selectedErrors = [];
+        let errorMessages = [];
+        let url = urls[urlIndex];
+        let wcagExecutor =  new WCAGExecutor();
+        let issues =  await  wcagExecutor.executeWCAG(url)
 
-const resultsAA = await pally (URL,optionsAA);
-const resultsA = await pally (URL,optionsA);
+        WCARGProcessing.processIssues(issues,selectedErrors,errorMessages);
+        let isAccesible = accesibility.isAccesible(url, selectedErrors, errorMessages);
 
-resultsAA.issues.forEach(element => {
-        let code = element.code.substring(0,37);
-        let wcagCode = wcag.containsWcag(code)
-        if (wcagCode){
-                selectedErrors.push(element.code);
-                mapOfErrorMessages.set(element.code,errorMessages.getErrorMessageByErrorCode(element.code));
+        let result = {
+            url: url,
+            isAccesible:isAccesible,
+            selectedErrors: selectedErrors,
+            errorMessages: errorMessages
         }
-});
 
-resultsA.issues.forEach(element => {
-        let code = element.code.substring(0,36);
-        let wcagCode = wcag.containsWcag(code);
-        if ( wcagCode){
-                selectedErrors.push(element.code);
-                mapOfErrorMessages.set(element.code,errorMessages.getErrorMessageByErrorCode(element.code));
-        }
-});
-
-let pageUrl  = resultsAA.pageUrl;
-console.log(pageUrl)
-
-isAccesible.isAccesible(pageUrl,selectedErrors,mapOfErrorMessages);
-
+        results.push(result)
+    }
+    console.log("RESULTADOS: " + JSON.stringify(results))
 }
-
-}
-
 
 
 run();

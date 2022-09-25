@@ -1,4 +1,4 @@
-class ErrorMessageUtil {
+class ErrorMessage {
 
     static messages = new Map([
         //1_1_1
@@ -219,7 +219,7 @@ class ErrorMessageUtil {
 
     static getErrorMessageByErrorCode(errorCode){
         let errorMessage = null;
-        errorMessage  =   ErrorMessageUtil.messages.get(errorCode);
+        errorMessage  =   ErrorMessage.messages.get(errorCode);
 
         if (!errorMessage){
             errorMessage = "Mensaje de error no encontrado para el codigo de error: " + errorCode;
@@ -233,5 +233,5 @@ class ErrorMessageUtil {
 
 
 module.exports = {
-    "getErrorMessageByErrorCode":ErrorMessageUtil.getErrorMessageByErrorCode
+    "getErrorMessageByErrorCode":ErrorMessage.getErrorMessageByErrorCode
 }

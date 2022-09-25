@@ -1,8 +1,16 @@
 'use strict';
 
 
-function isAccesible(pageUrl,selectedErrors,mapOfErrorMessages) {
+function isAccesible(pageUrl,selectedErrors,errorMessages) {
     //console.log("Cantidad repetidas  " + selectedErrors)
+
+    let mapOfErrorMessages = new Map();
+
+    for(let errorIndex = 0; errorIndex < errorMessages.length; errorIndex++){
+        let errorEntry = errorMessages[errorIndex];
+        mapOfErrorMessages.set(errorEntry.code, errorEntry.message);
+    }
+
 
     let result = selectedErrors.filter((item,index)=>{
     return selectedErrors.indexOf(item) === index;
@@ -28,13 +36,17 @@ function isAccesible(pageUrl,selectedErrors,mapOfErrorMessages) {
         }
         console.log(errorObject.nivel  + " "+ errorObject.principio  + " "+ errorObject.guia  + " "+ errorObject.criterio + " "+ errorObject.tecnica +" + "+ errorObject.message);
     } 
-
+    let isAccesible;
     if (result.length > 8){
             console.log(pageUrl + " NO ES ACCESIBLE")
+        isAccesible = false;
     }
     else {
             console.log(pageUrl + " ES ACCESIBLE")
-    }      
+        isAccesible = true;
+    }
+
+    return isAccesible;
 }
 
 
