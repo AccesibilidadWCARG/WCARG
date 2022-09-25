@@ -3,6 +3,7 @@ const wcag = require("./constants/WCARGArgentina");
 const errorMessages = require("./utils/errorMessage");
 const WCAGExecutor = require("./utils/WCAGExecutor")
 const WCARGProcessing = require("./utils/WCARGProcessing");
+const WCARGMailer = require("./mailer/WCARGMailer");
 
 
 
@@ -32,7 +33,14 @@ async function run() {
 
         results.push(result)
     }
-    console.log("RESULTADOS: " + JSON.stringify(results))
+
+    await WCARGMailer.sendEmail({
+        subject: "WCARG | Resultados de Accesibilidad Web",
+        text: JSON.stringify(results),
+        to: "gonza.a.fuentes@gmail.com;rlema.1989@gmail.com",
+        from: process.env.EMAIL
+    })
+    //Enviar email aca
 }
 
 
