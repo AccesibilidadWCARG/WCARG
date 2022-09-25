@@ -1,18 +1,15 @@
-const accesibility = require("./utils/accesibility.js");
-const wcag = require("./constants/WCARGArgentina");
-const errorMessages = require("./utils/errorMessage");
+const accesibility = require("./utils/WCARGEvaluator.js");
 const WCAGExecutor = require("./utils/WCAGExecutor")
 const WCARGProcessing = require("./utils/WCARGProcessing");
 const WCARGMailer = require("./mailer/WCARGMailer");
-
-
+const WCARGReporter = require("./reporter/WCARReporter")
 
 
 async function run() {
     let urlsList = process.argv[2];
     let urls = urlsList.split(",");
 
-    let results = []
+    let report = [];
 
     for (let urlIndex = 0; urlIndex < urls.length; urlIndex++) {
         let selectedErrors = [];
@@ -21,23 +18,22 @@ async function run() {
         let wcagExecutor =  new WCAGExecutor();
         let issues =  await  wcagExecutor.executeWCAG(url)
 
-        WCARGProcessing.processIssues(issues,selectedErrors,errorMessages);
-        let isAccesible = accesibility.isAccesible(url, selectedErrors, errorMessages);
+        let results = WCARGProcessing.processIssues(issues,selectedErrors,errorMessages);
+        let isAccesible = accesibility.isAccesible(url, results[0], results[1]);
 
-        let result = {
+        let reportEntry = {
             url: url,
             isAccesible:isAccesible,
-            selectedErrors: selectedErrors,
-            errorMessages: errorMessages
+            selectedErrors: results[0],
+            errorMessages: results[1]
         }
-
-        results.push(result)
+        report.push(reportEntry)
     }
 
     await WCARGMailer.sendEmail({
         subject: "WCARG | Resultados de Accesibilidad Web",
-        text: JSON.stringify(results),
-        to: "gonza.a.fuentes@gmail.com;rlema.1989@gmail.com",
+        html: JSON.stringify(WCARGReporter.createHTML(report)),
+        to: "gonza.a.fuentes@gmail.com",
         from: process.env.EMAIL
     })
     //Enviar email aca

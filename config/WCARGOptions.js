@@ -26,6 +26,6 @@ class WCARGOptions {
 }
 
 module.exports = {
-    "A":WCARGOptions.A,
-    "AA":WCARGOptions.AA
+    "A": WCARGOptions.A,
+    "AA": WCARGOptions.AA
 }

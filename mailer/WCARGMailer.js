@@ -54,14 +54,6 @@ static sendEmail = async (emailOptions) => {
     let emailTransporter = await WCARGMailer.createTransporter();
     await emailTransporter.sendMail(emailOptions);
 };
-/*
-sendEmail({
-    subject: "Test",
-    text: "I am sending an email from nodemailer!",
-    to: "put_email_of_the_recipient",
-    from: process.env.EMAIL
-});*/
-
 }
 
 module.exports = {
