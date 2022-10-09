@@ -2,7 +2,7 @@ const accesibility = require("./utils/WCARGEvaluator.js");
 const WCAGExecutor = require("./utils/WCAGExecutor")
 const WCARGProcessing = require("./utils/WCARGProcessing");
 const WCARGMailer = require("./mailer/WCARGMailer");
-const WCARGReporter = require("./reporter/WCARReporter")
+const WCARGReportGenerator = require("./reporter/WCARGReportGenerator")
 
 
 async function run() {
@@ -30,12 +30,10 @@ async function run() {
         report.push(reportEntry)
     }
 
-    await WCARGMailer.sendEmail({
-        subject: "WCARG | Resultados de Accesibilidad Web",
-        html: JSON.stringify(WCARGReporter.createHTML(report)),
-        to: "gonza.a.fuentes@gmail.com",
-        from: process.env.EMAIL
-    })
+    let isGenerated = WCARGReportGenerator.createReport(report);
+    setTimeout(() => {  console.log("Generando Reporte report!"); }, 10000);
+
+    await WCARGMailer.sendEmail()
     //Enviar email aca
 }
 

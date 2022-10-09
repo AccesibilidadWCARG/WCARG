@@ -50,9 +50,22 @@ static  createTransporter = async () => {
     return transporter;
 };
 
-static sendEmail = async (emailOptions) => {
+static sendEmail = async (report) => {
     let emailTransporter = await WCARGMailer.createTransporter();
-    await emailTransporter.sendMail(emailOptions);
+    let date = new Date();
+    let dateString =  date.toLocaleDateString() + " " + date.toLocaleTimeString();
+
+    await emailTransporter.sendMail({
+        subject: "WCARG | Resultados de Accesibilidad Web",
+        text: "Reporte  de Accesibilidad Web con fecha  "  + dateString,
+        to: "gonza.a.fuentes@gmail.com",
+        from: process.env.EMAIL,
+        attachments: [{
+            filename: 'reporte-accesibilidad'+dateString+'.pdf',
+            path: './reporter-results/wcarg-report.pdf',
+            contentType: 'application/pdf'
+        }],
+    });
 };
 }
 
