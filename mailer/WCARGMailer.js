@@ -50,10 +50,8 @@ static  createTransporter = async () => {
     return transporter;
 };
 
-static sendEmail = async (report) => {
+static sendEmail = async (dateString) => {
     let emailTransporter = await WCARGMailer.createTransporter();
-    let date = new Date();
-    let dateString =  date.toLocaleDateString() + " " + date.toLocaleTimeString();
 
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",

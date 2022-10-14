@@ -4,13 +4,13 @@ const WCARGhtml = WCARGfs.readFileSync("./reporter/report.html", "utf8");
 
 class WCARGReportGenerator {
     static options = {
-        format: "A3",
+        format: "A4",
         orientation: "portrait",
-        border: "10mm",
-        header: {
-            height: "45mm",
-            contents: '<div style="text-align: center;">WCARG</div>'
-        },
+        border: "20mm",
+      //  header: {
+      //      height: "60px",
+      //      contents: '<div style="text-align: center;background-color: #31d2f2; font-size: 25px; ">WCARG - Reporte de Accesibilidad</div>'
+      //  },
         footer: {
             height: "28mm",
             contents: {
@@ -22,12 +22,13 @@ class WCARGReportGenerator {
         }
     };
 
-    static createReport (reportData){
+    static createReport (reportData, fecha){
 
         let  document = {
             html: WCARGhtml,
             data: {
                 reportEntry: reportData,
+                fecha:fecha
             },
             path: "./reporter-results/wcarg-report.pdf",
             type: "",

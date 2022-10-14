@@ -6,40 +6,70 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        .badge {
-            --bs-badge-padding-x: 0.65em;
-            --bs-badge-padding-y: 0.35em;
-            --bs-badge-font-size: 0.75em;
-            --bs-badge-font-weight: 700;
-            --bs-badge-color: #fff;
-            --bs-badge-border-radius: 0.375rem;
-            display: inline-block;
-            padding: var(--bs-badge-padding-y) var(--bs-badge-padding-x);
-            font-size: var(--bs-badge-font-size);
-            font-weight: var(--bs-badge-font-weight);
-            line-height: 1;
-            color: var(--bs-badge-color);
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            border-radius: var(--bs-badge-border-radius);
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
         }
 
-        .bg-secondary {
-            --bs-bg-opacity: 1;
-            background-color: rgba(var(--bs-secondary-rgb),var(--bs-bg-opacity))!important;
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            font-size: 13px;
         }
-
     </style>
-    <link href="./reporter/static/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-<h1>Example heading <span class="badge bg-secondary">New</span></h1>
+<div style="padding: 10px; background-color: darkseagreen; border-radius: 5px; align-content: center">
+    <h2>WCARG -  Reporte de Accesibilidad</h2>
+</div>
+<p>Resultados del reporte creado con fecha <b>{{fecha}}</b></p>
+<hr>
+{{#each reportEntry}}
+{{#ifCond this.isAccesible '==' true}}
 <ul>
-    {{#each reportEntry}}
-    <li>URL: {{this.url}}</li>
-    <h1>Example heading <span class="badge bg-secondary">New</span></h1>
-    {{/each}}
+    <li><h3>URL: {{this.url}} | <span style="color: green"><u>Accesible</u></span></h3></li>
 </ul>
+{{/ifCond}}
+{{#ifCond this.isAccesible '==' false}}
+<ul>
+    <li><h2>URL: {{this.url}} | <span style="color: red"><u>No Accesible</u></span></h2></li>
+</ul>
+{{/ifCond}}
+<p style="font-size: 17px"><b><u>Errores encontrados</u></b></p>
+    <div style="width: 90%">
+        {{#each this.errorMessages}}
+      <!--  <ul>
+            <li style="font-size: 13px"><b>Codigo</b>: {{this.code}}</li>
+            <li style="font-size: 13px"><b>Mensaje</b>: {{this.message}}</li>
+            <li style="font-size: 13px"><b>Contexto</b>: {{this.context}}</li>
+            <li style="font-size: 13px"><b>Selector</b>: {{this.selector}}</li>
+        </ul>-->
+        <table>
+            <tr>
+                <td><b>Codigo</b></td>
+                <td>{{this.code}}</td>
+            </tr>
+            <tr>
+                <td><b>Mensaje</b></td>
+                <td>{{this.message}}</td>
+            </tr>
+            <tr>
+                <td><b>Contexto</b></td>
+                <td>{{this.context}}</td>
+            </tr>
+            <tr>
+                <td><b>Selector</b></td>
+                <td>{{this.selector}}</td>
+            </tr>
+        </table>
+        <hr>
+        {{/each}}
+    </div>
+&nbsp;
+&nbsp;
+{{/each}}
+
 </body>
 </html>
