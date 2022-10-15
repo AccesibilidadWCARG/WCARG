@@ -61,7 +61,7 @@ static sendEmail = async (dateString) => {
         to: "gonza.a.fuentes@gmail.com;rlema.1989@gmail.com",
         from: process.env.EMAIL,
         attachments: [{
-            filename: 'reporte-accesibilidad.pdf',
+            filename: 'reporte-accesibilidad-'+stringFecha+'.pdf',
             path: './reporter-results/wcarg-report-'+stringFecha+'.pdf',
             contentType: 'application/pdf'
         }],
