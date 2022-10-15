@@ -21,8 +21,15 @@
     </style>
 </head>
 <body>
-<div style="padding: 10px; background-color: darkseagreen; border-radius: 5px; align-content: center">
-    <h2>WCARG -  Reporte de Accesibilidad</h2>
+<div style="padding: 10px; background-color: #2274b4; border-radius: 5px; align-content: center">
+    <table>
+        <tbody>
+        <tr>
+            <td><img src="wcarg.jpeg" /></td>
+            <td align="center"> <h2>WCARG -  Reporte de Accesibilidad</h2></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <p>Resultados del reporte creado con fecha <b>{{fecha}}</b></p>
 <hr>
@@ -40,12 +47,6 @@
 <p style="font-size: 17px"><b><u>Errores encontrados</u></b></p>
     <div style="width: 90%">
         {{#each this.errorMessages}}
-      <!--  <ul>
-            <li style="font-size: 13px"><b>Codigo</b>: {{this.code}}</li>
-            <li style="font-size: 13px"><b>Mensaje</b>: {{this.message}}</li>
-            <li style="font-size: 13px"><b>Contexto</b>: {{this.context}}</li>
-            <li style="font-size: 13px"><b>Selector</b>: {{this.selector}}</li>
-        </ul>-->
         <table>
             <tr>
                 <td><b>Error</b></td>

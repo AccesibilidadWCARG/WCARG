@@ -1,5 +1,5 @@
-const accesibility = require("./utils/WCARGEvaluator.js");
-const WCAGExecutor = require("./utils/WCAGExecutor")
+const WCARGEvaluator = require("./utils/WCARGEvaluator.js");
+const WCARGExecutor = require("./utils/WCARGExecutor")
 const WCARGProcessing = require("./utils/WCARGProcessing");
 const WCARGMailer = require("./mailer/WCARGMailer");
 const WCARGReportGenerator = require("./reporter/WCARGReportGenerator")
@@ -15,11 +15,11 @@ async function run() {
         let selectedErrors = [];
         let errorMessages = [];
         let url = urls[urlIndex];
-        let wcagExecutor =  new WCAGExecutor();
+        let wcagExecutor =  new WCARGExecutor();
         let issues =  await  wcagExecutor.executeWCAG(url)
 
         let results = WCARGProcessing.processIssues(issues,selectedErrors,errorMessages);
-        let isAccesible = accesibility.isAccesible(url, results[0], results[1]);
+        let isAccesible = WCARGEvaluator.isAccesible(url, results[0], results[1]);
 
         let reportEntry = {
             url: url,
