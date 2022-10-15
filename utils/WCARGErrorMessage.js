@@ -1,4 +1,4 @@
-class ErrorMessage {
+class WCARGErrorMessage {
 
     static messages = new Map([
         //1_1_1
@@ -219,7 +219,7 @@ class ErrorMessage {
 
     static getErrorMessageByErrorCode(errorCode) {
         let errorMessage = null;
-        errorMessage = ErrorMessage.messages.get(errorCode);
+        errorMessage = WCARGErrorMessage.messages.get(errorCode);
 
         if (!errorMessage) {
             errorMessage = "Mensaje de error no encontrado para el codigo de error: " + errorCode;
@@ -230,5 +230,5 @@ class ErrorMessage {
 
 
 module.exports = {
-    "getErrorMessageByErrorCode": ErrorMessage.getErrorMessageByErrorCode
+    "getErrorMessageByErrorCode": WCARGErrorMessage.getErrorMessageByErrorCode
 }

@@ -1,5 +1,5 @@
 const wcag = require("../constants/WCARGArgentina");
-const errorMessagesUtil = require("./errorMessage");
+const errorMessagesUtil = require("./WCARGErrorMessage");
 const WCARGOptions = require("../config/WCARGOptions");
 
 class WCARGProcessing {
