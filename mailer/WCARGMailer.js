@@ -56,10 +56,10 @@ static sendEmail = async (dateString) => {
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",
         text: "Reporte  de Accesibilidad Web con fecha  "  + dateString,
-        to: "gonza.a.fuentes@gmail.com",
+        to: "gonza.a.fuentes@gmail.com;rlema.1989@gmail.com",
         from: process.env.EMAIL,
         attachments: [{
-            filename: 'reporte-accesibilidad'+dateString+'.pdf',
+            filename: 'reporte-accesibilidad.pdf',
             path: './reporter-results/wcarg-report.pdf',
             contentType: 'application/pdf'
         }],

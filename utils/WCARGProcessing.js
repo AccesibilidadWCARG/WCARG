@@ -22,7 +22,7 @@ class WCARGProcessing {
             let principio;
             let criterio;
             let tecnica;
-            let guia;
+            let pauta;
 
             if (wcagCode) {
                 error.push(element.code);
@@ -31,16 +31,24 @@ class WCARGProcessing {
                 console.log("ERROR SPLIT" + errorSplit)
 
                 if (errorSplit[0] === "WCAG2AA" ){
-                    nivel = "Nivel: AA";
+                    nivel = "| Nivel: AA |";
                 }else {
-                    nivel = "Nivel: A ";
+                    nivel = "| Nivel: A |";
                 }
 
 
                 principio = errorSplit[1].replace("Principle", " | Principio: ");
-                guia = errorSplit[2].replace("Guideline", " | Guia: ");
+                pauta = errorSplit[2].replace("Guideline", " | Pauta: ");
                 criterio = " | Criterio: " + errorSplit[3];
-                tecnica = " | Técnica: " + errorSplit[4];
+
+
+                tecnica = " | Técnica: " ;
+
+                for (let x = 4 ; x < errorSplit.length;x++){
+                    tecnica = tecnica + errorSplit[x];
+                }
+
+
 
 
 
@@ -53,7 +61,7 @@ class WCARGProcessing {
                     selector: element.selector,
                     nivel:nivel,
                     principio:principio,
-                    guia:guia,
+                    pauta:pauta,
                     criterio:criterio,
                     tecnica:tecnica
 
@@ -89,7 +97,7 @@ class WCARGProcessing {
                             selector: errorMessagesByError[ema].selector,
                             nivel: errorMessagesByError[ema].nivel,
                             principio: errorMessagesByError[ema].principio,
-                            guia: errorMessagesByError[ema].guia,
+                            pauta: errorMessagesByError[ema].pauta,
                             criterio: errorMessagesByError[ema].criterio,
                             tecnica: errorMessagesByError[ema].tecnica
 

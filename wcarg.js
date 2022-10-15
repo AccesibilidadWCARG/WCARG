@@ -36,8 +36,11 @@ async function run() {
     let isGenerated = WCARGReportGenerator.createReport(report, dateString);
     setTimeout(() => {  console.log("Generando Reporte report!"); }, 10000);
 
-   // await WCARGMailer.sendEmail(dateString)
-    //Enviar email aca
+    await WCARGMailer.sendEmail(dateString)
+
+    // Iterar sobre variabel report y verificar si algun sitio NO es accesible
+    // Si el sitio no es accesible, retornar 1 y parar el pipeline y hacer que falle.
+
 }
 
 
