@@ -22,15 +22,48 @@ class WCARGReportGenerator {
         }
     };
 
-    static createReport (reportData, fecha){
 
+    static  getDocumentProperties = async (reportData,fecha) => {
+        let fechaOriginal = fecha ;
+        let stringFecha  = fecha.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
         let  document = {
             html: WCARGhtml,
             data: {
                 reportEntry: reportData,
-                fecha:fecha
+                fecha:fechaOriginal
             },
-            path: "./reporter-results/wcarg-report.pdf",
+            path: "./reporter-results/wcarg-report-"+stringFecha+".pdf",
+            type: "",
+        };
+
+       return document;
+    };
+    static createReport = async (reportData,fecha) => {
+        let document = await WCARGReportGenerator.getDocumentProperties(reportData,fecha);
+
+        let isOk = false;
+       await  WCARGpdf.
+        create(document, WCARGReportGenerator.options)
+            .then((res) => {
+                console.log(res);
+                isOk =true;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+
+
+   /* static createReport (reportData, fecha){
+        let fechaOriginal = fecha ;
+        let stringFecha  = fecha.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
+        let  document = {
+            html: WCARGhtml,
+            data: {
+                reportEntry: reportData,
+                fecha:fechaOriginal
+            },
+            path: "./reporter-results/wcarg-report-"+stringFecha+".pdf",
             type: "",
         };
 
@@ -46,7 +79,7 @@ class WCARGReportGenerator {
             });
 
         return isOk;
-    }
+    }*/
 }
 
 module.exports = {

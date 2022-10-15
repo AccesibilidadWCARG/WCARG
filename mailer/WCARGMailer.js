@@ -52,15 +52,17 @@ static  createTransporter = async () => {
 
 static sendEmail = async (dateString) => {
     let emailTransporter = await WCARGMailer.createTransporter();
+    let fechaOriginal = dateString ;
+    let stringFecha  = dateString.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
 
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",
-        text: "Reporte  de Accesibilidad Web con fecha  "  + dateString,
+        text: "Reporte  de Accesibilidad Web con fecha  "  + fechaOriginal,
         to: "gonza.a.fuentes@gmail.com;rlema.1989@gmail.com",
         from: process.env.EMAIL,
         attachments: [{
             filename: 'reporte-accesibilidad.pdf',
-            path: './reporter-results/wcarg-report.pdf',
+            path: './reporter-results/wcarg-report-'+stringFecha+'.pdf',
             contentType: 'application/pdf'
         }],
     });

@@ -33,8 +33,10 @@ async function run() {
     let date = new Date();
     let dateString =  date.toLocaleDateString() + " " + date.toLocaleTimeString();
 
-    let isGenerated = WCARGReportGenerator.createReport(report, dateString);
-    setTimeout(() => {  console.log("Generando Reporte report!"); }, 10000);
+    await WCARGReportGenerator.createReport(report, dateString);
+
+
+    //setTimeout(() => {  console.log("Generando Reporte report!"); }, 30000);
 
     await WCARGMailer.sendEmail(dateString)
 
