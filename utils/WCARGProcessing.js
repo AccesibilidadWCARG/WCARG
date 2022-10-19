@@ -16,6 +16,9 @@ class WCARGProcessing {
 
         results.issues.forEach(element => {
 
+
+
+            //Aeliminar las WCARGOption y usar string WCARGA y WCARGAA
             let code = option === WCARGOptions.A ? element.code.substring(0, 36) : element.code.substring(0, 37);
             let wcagCode = wcag.containsWcag(code)
             let nivel;
