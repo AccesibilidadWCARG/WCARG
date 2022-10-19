@@ -17,7 +17,6 @@ async function run() {
         let url = urls[urlIndex];
         let wcagExecutor =  new WCARGExecutor();
         let issues =  await  wcagExecutor.executeWCAG(url)
-
         let results = WCARGProcessing.processIssues(issues,selectedErrors,errorMessages);
         let isAccesible = WCARGEvaluator.isAccesible(url, results[0], results[1]);
 

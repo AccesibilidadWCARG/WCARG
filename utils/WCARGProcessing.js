@@ -16,8 +16,6 @@ class WCARGProcessing {
 
         results.issues.forEach(element => {
 
-
-
             //Aeliminar las WCARGOption y usar string WCARGA y WCARGAA
             let code = option === WCARGOptions.A ? element.code.substring(0, 36) : element.code.substring(0, 37);
             let wcagCode = wcag.containsWcag(code)
@@ -31,7 +29,6 @@ class WCARGProcessing {
                 error.push(element.code);
 
                 let errorSplit = element.code.split(".")
-                console.log("ERROR SPLIT" + errorSplit)
 
                 if (errorSplit[0] === "WCAG2AA" ){
                     nivel = "| Nivel: AA |";
@@ -43,19 +40,10 @@ class WCARGProcessing {
                 principio = errorSplit[1].replace("Principle", " | Principio: ");
                 pauta = errorSplit[2].replace("Guideline", " | Pauta: ");
                 criterio = " | Criterio: " + errorSplit[3];
-
-
                 tecnica = " | Técnica: " ;
-
                 for (let x = 4 ; x < errorSplit.length;x++){
                     tecnica = tecnica + errorSplit[x];
                 }
-
-
-
-
-
-
 
                 let message = {
                     code: element.code,
@@ -67,7 +55,6 @@ class WCARGProcessing {
                     pauta:pauta,
                     criterio:criterio,
                     tecnica:tecnica
-
                 }
 
                 errorMessages.push(message);
@@ -105,8 +92,6 @@ class WCARGProcessing {
                             tecnica: errorMessagesByError[ema].tecnica
 
                         }
-
-                        console.log("NEW ENTRY*******************************************"+JSON.stringify(newEntry))
                         newErrorMessajesArray.push(newEntry);
                         break;
                     }

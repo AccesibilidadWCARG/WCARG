@@ -16,7 +16,7 @@ class WCARGEvaluator {
             return selectedErrors.indexOf(item) === index;
         })
 
-        console.log("Los errores de accesibilidad encontrados son:  ")
+       // console.log("Los errores de accesibilidad encontrados son:  ")
 
         for (let i = 0; i < result.length; i++) {
 
@@ -34,14 +34,14 @@ class WCARGEvaluator {
                 errorObject.tecnica = " | Técnica: " + errorSplit[4];
                 errorObject.message = " | Mensaje: " + mapOfErrorMessages.get(error) + " |";
             }
-            console.log(errorObject.nivel + " " + errorObject.principio + " " + errorObject.guia + " " + errorObject.criterio + " " + errorObject.tecnica + " + " + errorObject.message);
+          //  console.log(errorObject.nivel + " " + errorObject.principio + " " + errorObject.guia + " " + errorObject.criterio + " " + errorObject.tecnica + " + " + errorObject.message);
         }
         let isAccesible;
         if (result.length > 8) {
-            console.log(pageUrl + " NO ES ACCESIBLE")
+          //  console.log(pageUrl + " NO ES ACCESIBLE")
             isAccesible = false;
         } else {
-            console.log(pageUrl + " ES ACCESIBLE")
+          //  console.log(pageUrl + " ES ACCESIBLE")
             isAccesible = true;
         }
 
