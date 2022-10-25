@@ -5,6 +5,7 @@ class WCARGEvaluator {
         //console.log("Cantidad repetidas  " + selectedErrors)
 
         let mapOfErrorMessages = new Map();
+        let seleccionados = [];
 
         for (let errorIndex = 0; errorIndex < errorMessages.length; errorIndex++) {
             let errorEntry = errorMessages[errorIndex];
@@ -36,8 +37,23 @@ class WCARGEvaluator {
             }
           //  console.log(errorObject.nivel + " " + errorObject.principio + " " + errorObject.guia + " " + errorObject.criterio + " " + errorObject.tecnica + " + " + errorObject.message);
         }
+
+        for (let i = 0; i < result.length; i++) {
+            let select = result[i];
+            let seleccionadosSplit = select.split(".");
+            seleccionados.push(seleccionadosSplit[3]);
+        }
+
+        let criteriosfinal = seleccionados.filter((item,index)=>{
+            return seleccionados.indexOf(item) === index;
+        })
+
+        console.log(criteriosfinal)
+
+        console.log(result)
+
         let isAccesible;
-        if (result.length > 8) {
+        if (criteriosfinal.length > 8) {
           //  console.log(pageUrl + " NO ES ACCESIBLE")
             isAccesible = false;
         } else {
