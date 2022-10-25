@@ -48,9 +48,9 @@ class WCARGEvaluator {
             return seleccionados.indexOf(item) === index;
         })
 
-        console.log(criteriosfinal)
+        //console.log(criteriosfinal)
 
-        console.log(result)
+        //console.log(result)
 
         let isAccesible;
         if (criteriosfinal.length > 8) {

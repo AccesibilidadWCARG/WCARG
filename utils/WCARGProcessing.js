@@ -65,7 +65,8 @@ class WCARGProcessing {
     static processIssues(results, selectedErrors, errorMessages) {
         WCARGProcessing.processWCAGAResults(results[0], selectedErrors, errorMessages, WCARGOptions.A);
         WCARGProcessing.processWCAGAAResults(results[1], selectedErrors, errorMessages, WCARGOptions.AA);
-       return WCARGProcessing.filterMessages(selectedErrors, errorMessages);
+        return [selectedErrors, errorMessages]
+        //return WCARGProcessing.filterMessages(selectedErrors, errorMessages);
     }
 
     static filterMessages(errorMessages, errorMessagesByError) {
