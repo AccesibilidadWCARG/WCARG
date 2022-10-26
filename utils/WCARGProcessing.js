@@ -65,42 +65,24 @@ class WCARGProcessing {
     static processIssues(results, selectedErrors, errorMessages) {
         WCARGProcessing.processWCAGAResults(results[0], selectedErrors, errorMessages, WCARGOptions.A);
         WCARGProcessing.processWCAGAAResults(results[1], selectedErrors, errorMessages, WCARGOptions.AA);
-        return [selectedErrors, errorMessages]
-        //return WCARGProcessing.filterMessages(selectedErrors, errorMessages);
+
+        return WCARGProcessing.filterMessages(selectedErrors, errorMessages);
     }
 
     static filterMessages(errorMessages, errorMessagesByError) {
 
-        let errorsSet = new Set();
-        let newErrorMessajesArray = [];
+        errorMessages = errorMessages.filter((value, index, self) =>
+                index === self.findIndex((t) => (
+                    t.context === value.context && t.selector === value.selector
+                ))
+        )
 
-        for (let i = 0; i < errorMessages.length; i++) {
-            let em = errorMessages[i];
-            if (!errorsSet.has(em)) {
-                errorsSet.add(em)
+        errorMessagesByError = errorMessagesByError.filter((value, index, self) =>
+                index === self.findIndex((t) => (
+                    t.context === value.context && t.selector === value.selector
+                ))
+        )
 
-                for (let ema = 0; ema < errorMessagesByError.length; ema++) {
-                    if (em == errorMessagesByError[ema].code) {
-                        let newEntry = {
-                            code: errorMessagesByError[ema].code,
-                            message: errorMessagesByError[ema].message,
-                            context: errorMessagesByError[ema].context,
-                            selector: errorMessagesByError[ema].selector,
-                            nivel: errorMessagesByError[ema].nivel,
-                            principio: errorMessagesByError[ema].principio,
-                            pauta: errorMessagesByError[ema].pauta,
-                            criterio: errorMessagesByError[ema].criterio,
-                            tecnica: errorMessagesByError[ema].tecnica
-
-                        }
-                        newErrorMessajesArray.push(newEntry);
-                        break;
-                    }
-                }
-            }
-        }
-        errorMessages = Array.from(errorsSet)
-        errorMessagesByError = newErrorMessajesArray
         return [errorMessages,errorMessagesByError]
     }
 }
