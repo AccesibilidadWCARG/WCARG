@@ -55,12 +55,12 @@ static sendEmail = async (dateString) => {
     let fechaOriginal = dateString ;
     let stringFecha  = dateString.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
 
-    //console.log(emailto);
+    let emailto= "gonza.a.fuentes@gmail.com;rlema.1989@gmail.com";
 
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",
         text: "Reporte  de Accesibilidad Web con fecha  "  + fechaOriginal,
-        to: "gonza.a.fuentes@gmail.com;rlema.1989@gmail.com",
+        to: emailto,
         from: process.env.EMAIL,
         attachments: [{
             filename: 'reporte-accesibilidad-'+stringFecha+'.pdf',
