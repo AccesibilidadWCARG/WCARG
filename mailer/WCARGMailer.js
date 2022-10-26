@@ -55,7 +55,7 @@ static sendEmail = async (dateString) => {
     let fechaOriginal = dateString ;
     let stringFecha  = dateString.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
 
-    console.log(emailto);
+    //console.log(emailto);
 
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",
