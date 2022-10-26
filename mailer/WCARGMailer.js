@@ -57,6 +57,8 @@ static sendEmail = async (dateString,emailpipeline) => {
 
     let emailto= emailpipeline;
 
+    console.log(emailto);
+
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",
         text: "Reporte de Accesibilidad Web con fecha  "  + fechaOriginal,
