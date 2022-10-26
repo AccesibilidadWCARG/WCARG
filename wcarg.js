@@ -39,7 +39,8 @@ async function run() {
 
     //setTimeout(() => {  console.log("Generando Reporte report!"); }, 30000);
 
-    await WCARGMailer.sendEmail(dateString,emailto)
+    //await WCARGMailer.sendEmail(dateString,emailto)
+    await WCARGMailer.sendEmail(dateString)
 
     // Iterar sobre variabel report y verificar si algun sitio NO es accesible
     // Si el sitio no es accesible, retornar 1 y parar el pipeline y hacer que falle.
