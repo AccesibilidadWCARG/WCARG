@@ -7,10 +7,10 @@ const WCARGReportGenerator = require("./reporter/WCARGReportGenerator")
 
 async function run() {
     let urlsList = process.argv[2];
-    //let emailto = process.argv[3];
+    let mailpa = process.argv[3];
     let emailto ="gonza.a.fuentes@gmail.com;rlema.1989@gmail.com";
     let urls = urlsList.split(",");
-
+    console.log(mailpa)
     let report = [];
 
     for (let urlIndex = 0; urlIndex < urls.length; urlIndex++) {
