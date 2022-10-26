@@ -7,10 +7,9 @@ const WCARGReportGenerator = require("./reporter/WCARGReportGenerator")
 
 async function run() {
     let urlsList = process.argv[2];
-    let mailpa = process.argv[3];
-    let emailto ="gonza.a.fuentes@gmail.com;rlema.1989@gmail.com";
+    //let mailpa = process.argv[3];
+    let emailpipeline ="gonza.a.fuentes@gmail.com;rlema.1989@gmail.com";
     let urls = urlsList.split(",");
-    console.log(mailpa)
     let report = [];
 
     for (let urlIndex = 0; urlIndex < urls.length; urlIndex++) {
@@ -40,7 +39,7 @@ async function run() {
     //setTimeout(() => {  console.log("Generando Reporte report!"); }, 30000);
 
     //await WCARGMailer.sendEmail(dateString,emailto)
-    await WCARGMailer.sendEmail(dateString)
+    await WCARGMailer.sendEmail(dateString,emailpipeline)
 
     // Iterar sobre variabel report y verificar si algun sitio NO es accesible
     // Si el sitio no es accesible, retornar 1 y parar el pipeline y hacer que falle.
