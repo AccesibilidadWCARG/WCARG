@@ -1,6 +1,8 @@
 const WCARGpdf = require("pdf-creator-node");
 const WCARGfs = require("fs");
 const WCARGhtml = WCARGfs.readFileSync("./reporter/report.html", "utf8");
+const bitmap = WCARGfs.readFileSync(__dirname+ "\\wcarg.jpg");
+const logo = bitmap.toString('base64');
 
 class WCARGReportGenerator {
     static options = {
@@ -30,7 +32,8 @@ class WCARGReportGenerator {
             html: WCARGhtml,
             data: {
                 reportEntry: reportData,
-                fecha:fechaOriginal
+                fecha:fechaOriginal,
+                logo: logo
             },
             path: "./reporter-results/wcarg-report-"+stringFecha+".pdf",
             type: "",
