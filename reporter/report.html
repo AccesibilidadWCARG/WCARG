@@ -18,15 +18,52 @@
             padding: 8px;
             font-size: 13px;
         }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            font-family: sans-serif;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .styled-table thead tr {
+            background-color: #0080ff;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #0080ff;
+        }
+        .styled-table tbody tr.active-row {
+            font-weight: bold;
+            color: #0080ff;
+        }
+        h2 .white-text {
+        color: rgb(253, 253, 253);
+        }
     </style>
 </head>
 <body>
-<div style="padding: 10px; background-color: #0080ff; border-radius: 5px; align-content: center">
+<div style="padding: 10px; background-color: #0080ff; border-radius: 5px; align-content: center;font-family: sans-serif">
     <table>
         <tbody>
         <tr>
             <td><img width="100%" src="data:image/png;base64,{{logo}}" alt="Logo WCARG"/></td>
-            <td align="center"> <h2>Reporte de Accesibilidad</h2></td>
+            <td align="center "> <h2 class="white-text">Reporte de Accesibilidad</h2></td>
         </tr>
         </tbody>
     </table>
@@ -47,7 +84,7 @@
 <p style="font-size: 17px"><b><u>Errores encontrados</u></b></p>
     <div style="width: 90%">
         {{#each this.errorMessages}}
-        <table>
+        <table class="styled-table">
             <tr>
                 <td><b>Error</b></td>
                 <td>{{this.principio}} {{this.pauta}} {{this.criterio}} {{this.tecnica}} {{this.nivel}}</td>
