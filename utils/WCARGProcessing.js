@@ -45,9 +45,22 @@ class WCARGProcessing {
                     tecnica = tecnica + errorSplit[x];
                 }
 
+
+                let messageString = errorMessagesUtil.getErrorMessageByErrorCode(element.code,element.message);
+
+                if (messageString.includes("\"{{id}}\"")){
+                    messageString = messageString.replaceAll("\"{{id}}\"",element.selector)
+                }
+
+                if (messageString.includes("tiene una relación de contraste de {{valor}}:1")){
+                    let index = element.message.lastIndexOf(":1");
+                    let value =  element.message.substring(index-5,index);
+                    messageString = messageString.replaceAll("{{valor}}",value);
+                }
+
                 let message = {
                     code: element.code,
-                    message: errorMessagesUtil.getErrorMessageByErrorCode(element.code),
+                    message:messageString,
                     context: element.context,
                     selector: element.selector,
                     nivel:nivel,

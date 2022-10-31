@@ -33,15 +33,10 @@ async function run() {
     let date = new Date();
     let dateString =  date.toLocaleDateString() + " " + date.toLocaleTimeString();
 
-    await WCARGReportGenerator.createReport(report, dateString);
+    //await WCARGReportGenerator.createReport(report, dateString);
+    //await WCARGMailer.sendEmail(dateString,emailpipeline)
 
-
-    //setTimeout(() => {  console.log("Generando Reporte report!"); }, 30000);
-
-    await WCARGMailer.sendEmail(dateString,emailpipeline)
-
-    // Iterar sobre variabel report y verificar si algun sitio NO es accesible
-    // Si el sitio no es accesible, retornar 1 y parar el pipeline y hacer que falle.
+    return 1
 
 }
 

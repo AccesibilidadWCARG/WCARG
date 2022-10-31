@@ -44,7 +44,7 @@ class WCARGErrorMessage {
         ["WCAG2A.Principle1.Guideline1_3.1_3_1.H44.NotFormControl", "El atributo \"for\" de esta etiqueta contiene un ID para un elemento que no es un control de formulario. Asegúrese de haber ingresado la ID correcta para el elemento previsto."],
         ["WCAG2A.Principle1.Guideline1_3.1_3_1.H65", "Este control de formulario tiene un atributo de \"título\" que está vacío o solo contiene espacios. Se ignorará para propósitos de prueba de etiquetado."],
         ["WCAG2A.Principle1.Guideline1_3.1_3_1.ARIA6", "Este control de formulario tiene un atributo \"aria-label\" que está vacío o solo contiene espacios. Se ignorará para propósitos de prueba de etiquetado."],
-        ["WCAG2A.Principle1.Guideline1_3.1_3_1.ARIA16,ARIA9", "Este control de formulario contiene un atributo aria-labelledby, sin embargo, incluye un ID \"{{id}}\" que no existe en un elemento. El atributo aria-labelledby se ignorará para propósitos de prueba de etiquetado."],
+        ["WCAG2A.Principle1.Guideline1_3.1_3_1.ARIA16,ARIA9", "Este control de formulario contiene un atributo aria-labelledby, sin embargo, incluye un ID que no existe en un elemento. El atributo aria-labelledby se ignorará para propósitos de prueba de etiquetado."],
         ["WCAG2A.Principle1.Guideline1_3.1_3_1.F68.Hidden", "Este campo de formulario oculto está etiquetado de alguna manera. No debería haber necesidad de etiquetar un campo de formulario oculto."],
         ["WCAG2A.Principle1.Guideline1_3.1_3_1.F68.HiddenAttr", "Este campo de formulario está diseñado para ocultarse (usando el atributo \"oculto\"), pero también está etiquetado de alguna manera. No debería haber necesidad de etiquetar un campo de formulario oculto."],
         ["WCAG2A.Principle1.Guideline1_3.1_3_1.F68", "Este campo de formulario debe estar etiquetado de alguna manera. Use el elemento de etiqueta (ya sea con un atributo \"for\" o envuelto alrededor del campo de formulario), o los atributos \"title\", \"aria-label\" o \"aria-labelledby\" según corresponda."],
@@ -98,7 +98,7 @@ class WCARGErrorMessage {
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs", "Este elemento está absolutamente posicionado y no se puede determinar el color de fondo. Asegúrese de que la relación de contraste entre el texto y todas las partes cubiertas del fondo sea de al menos {{obligatorio}}:1."],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.BgImage", "El texto de este elemento se coloca en una imagen de fondo. Asegúrese de que la relación de contraste entre el texto y todas las partes cubiertas de la imagen sea de al menos {{obligatorio}}:1."],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Alpha", "El texto o fondo de este elemento contiene transparencia. Asegúrese de que la relación de contraste entre el texto y el fondo sea de al menos {{obligatorio}}:1."],
-        ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail", "Este elemento tiene un contraste insuficiente en este nivel de conformidad. Se esperaba una relación de contraste de al menos {{requerido}}:1, pero el texto de este elemento tiene una relación de contraste de {{valor}}:1."],
+        ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail", "Este elemento tiene un contraste insuficiente en este nivel de conformidad. Se esperaba una relación de contraste de al menos 4.5:1, pero el texto de este elemento tiene una relación de contraste de {{valor}}:1."],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail.Recomendation", "Recomendación: "],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail.Recomendation.Text", "cambiar el color del texto a {{value}}"],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Fail.Recomendation.Background", "cambiar el fondo a {{value}}"],
@@ -106,7 +106,7 @@ class WCARGErrorMessage {
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs", "Este elemento está absolutamente posicionado y no se puede determinar el color de fondo. Asegúrese de que la relación de contraste entre el texto y todas las partes cubiertas del fondo sea de al menos {{obligatorio}}:1."],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage", "El texto de este elemento se coloca en una imagen de fondo. Asegúrese de que la relación de contraste entre el texto y todas las partes cubiertas de la imagen sea de al menos {{obligatorio}}:1."],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Alpha", "El texto o fondo de este elemento contiene transparencia. Asegúrese de que la relación de contraste entre el texto y el fondo sea de al menos {{obligatorio}}:1."],
-        ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail", "Este elemento tiene un contraste insuficiente en este nivel de conformidad. Se esperaba una relación de contraste de al menos {{requerido}}:1, pero el texto de este elemento tiene una relación de contraste de {{valor}}:1."],
+        ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail", "Este elemento tiene un contraste insuficiente en este nivel de conformidad. Se esperaba una relación de contraste de al menos 4.5:1, pero el texto de este elemento tiene una relación de contraste de {{valor}}:1."],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail.Recomendation", "Recomendación: "],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail.Recomendation.Text", "cambiar el color del texto a {{value}}"],
         ["WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail.Recomendation.Background", "cambiar el fondo a {{value}}"],
@@ -223,17 +223,15 @@ class WCARGErrorMessage {
         ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.InputEmail.Name", "Este elemento de entrada de correo electrónico no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: elemento de etiqueta, título indefinido, aria-label indefinido, aria-labeledby indefinido."],
         ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.InputText.Name", "Este elemento de entrada de texto no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: elemento de etiqueta, título indefinido, aria-label indefinido, aria-labeledby indefinido."],
         ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.A.Name", "Este elemento tiene la función de \"botón\" pero no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: contenido del elemento, aria-label indefinido, aria-labeledby indefinido."]
-
-
-
     ]);
 
-    static getErrorMessageByErrorCode(errorCode) {
+    static getErrorMessageByErrorCode(errorCode, originalMessage) {
         let errorMessage = null;
         errorMessage = WCARGErrorMessage.messages.get(errorCode);
 
         if (!errorMessage) {
-            errorMessage = "Mensaje de error no encontrado para el codigo de error: " + errorCode;
+            errorMessage = "Mensaje de error no encontrado para el codigo de error: " + errorCode
+                + "| ORIGINAL MESSAGE: " + originalMessage ;
         }
         return errorMessage
     }
