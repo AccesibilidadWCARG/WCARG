@@ -1,5 +1,5 @@
 <h1 align="center">
-<img src="https://drive.google.com/file/d/13TsHzR7TkOAqKPHuqk5hKvjnhP1hTQgl/view?usp=share_link" alt="WCARG" width="250"/>
+<img src="https://storage.cloud.google.com/wcarg/wcarg.jpg" alt="WCARG" width="250"/>
 </h1>
 
 
