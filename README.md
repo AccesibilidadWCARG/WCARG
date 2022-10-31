@@ -39,7 +39,7 @@ node .\wcarg.js "www.eventbrite.com" "gonfuentes@uade.ar,rlema@uade.edu.ar"
 Los resultados se envian por email. Localmente los reportes se guardan en <b>.\WCARG\reporter-results</b>
 
 
-### Entorno de Integracion Contínua
+### Entorno de Integracion Continua
 
 Dentro de su archivo de configuracion JenkinsFile, agregar un nuevo Stage.
 Este Stage puede ser agregado en cualquier momento dentro de su Pipeline
@@ -52,7 +52,7 @@ Este Stage puede ser agregado en cualquier momento dentro de su Pipeline
 }
 ```
 
-Creeun  directorio /jenkins/scripts dentro de su proyecto y agregue un archivo WCARG.bat (Windows) o WCARG.sh(Linux)
+Cree un  directorio /jenkins/scripts dentro de su proyecto y agregue un archivo WCARG.bat (Windows) o WCARG.sh (Linux)
 
 ```powershell
 set URL="https://www.eventbrite.com/ ,https://www.musimundo.com/"
