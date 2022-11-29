@@ -68,7 +68,7 @@
         </tbody>
     </table>
 </div>
-<p>Resultados del reporte creado con fecha <b>{{fecha}}</b></p>
+<p>Resultados del reporte creado con fecha <b>{{date}}</b></p>
 <hr>
 {{#each reportEntry}}
 {{#ifCond this.isAccesible '==' true}}
@@ -87,14 +87,14 @@
         <table class="styled-table">
             <tr>
                 <td><b>Error</b></td>
-                <td>{{this.principio}} {{this.pauta}} {{this.criterio}} {{this.tecnica}} {{this.nivel}}</td>
+                <td>{{this.principle}} {{this.guideline}} {{this.standard}} {{this.technique}} {{this.level}}</td>
             </tr>
             <tr>
                 <td><b>Mensaje</b></td>
                 <td>{{this.message}}</td>
             </tr>
             <tr>
-                <td><b>Contexto</b></td>
+                <td><b>Segmento de Código</b></td>
                 <td>{{this.context}}</td>
             </tr>
             <tr>

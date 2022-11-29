@@ -4,7 +4,7 @@ class WCARGEvaluator {
     static isAccesible(pageUrl, selectedErrors, errorMessages) {
 
         let mapOfErrorMessages = new Map();
-        let seleccionados = [];
+        let selected = [];
 
         for (let errorIndex = 0; errorIndex < errorMessages.length; errorIndex++) {
             let errorEntry = errorMessages[errorIndex];
@@ -22,28 +22,28 @@ class WCARGEvaluator {
             let errorObject = {};
 
             if (errorSplit.length > 0) {
-                errorSplit[0] === "WCAG2AA" ? errorObject.nivel = errorSplit[0].replace("WCAG2AA", "Nivel: AA") : errorObject.nivel = errorSplit[0].replace("WCAG2A", "Nivel: A ");
+                errorSplit[0] === "WCAG2AA" ? errorObject.level = errorSplit[0].replace("WCAG2AA", "Nivel: AA") : errorObject.level = errorSplit[0].replace("WCAG2A", "Nivel: A ");
 
-                errorObject.principio = errorSplit[1].replace("Principle", " | Principio: ");
-                errorObject.guia = errorSplit[2].replace("Guideline", " | Guia: ");
-                errorObject.criterio = " | Criterio: " + errorSplit[3];
-                errorObject.tecnica = " | Técnica: " + errorSplit[4];
+                errorObject.principle = errorSplit[1].replace("Principle", " | Principio: ");
+                errorObject.guideline = errorSplit[2].replace("Guideline", " | Guia: ");
+                errorObject.standard = " | Criterio: " + errorSplit[3];
+                errorObject.technique = " | Técnica: " + errorSplit[4];
                 errorObject.message = " | Mensaje: " + mapOfErrorMessages.get(error) + " |";
             }
         }
 
         for (let i = 0; i < result.length; i++) {
             let select = result[i];
-            let seleccionadosSplit = select.split(".");
-            seleccionados.push(seleccionadosSplit[3]);
+            let selectedSplit = select.split(".");
+            selected.push(selectedSplit[3]);
         }
 
-        let criteriosfinal = seleccionados.filter((item,index)=>{
-            return seleccionados.indexOf(item) === index;
+        let standardFinal = selected.filter((item,index)=>{
+            return selected.indexOf(item) === index;
         })
 
         let isAccesible;
-        if (criteriosfinal.length > 8) {
+        if (standardFinal.length > 8) {
             isAccesible = false;
         } else {
             isAccesible = true;

@@ -8,14 +8,13 @@ const WCARGReportGenerator = require("./reporter/WCARGReportGenerator")
 async function run() {
     let urlsList = process.argv[2];
     let emailpipeline = process.argv[3];
-    //let emailpipeline ="gonza.a.fuentes@gmail.com;rlema.1989@gmail.com";
     let urls = urlsList.split(",");
     let report = [];
 
-    for (let urlIndex = 0; urlIndex < urls.length; urlIndex++) {
+
+    for (const url of urls) {
         let selectedErrors = [];
         let errorMessages = [];
-        let url = urls[urlIndex];
         let wcagExecutor =  new WCARGExecutor();
         let issues =  await  wcagExecutor.executeWCAG(url)
         let results = WCARGProcessing.processIssues(issues,selectedErrors,errorMessages);

@@ -22,16 +22,13 @@ static  createTransporter = async () => {
         oauth2Client.getAccessToken((err, token) => {
           try {
               if (err) {
-                  console.log("Error porque no se puudo crear el token: " + err)
-                  reject("Failed to create access token :(");
+                  reject("Failed to create access token. Please request a new one.");
               }
               resolve(token);
           }
           catch (e){
-              console.log("ERROR WCAG MAILER" + e)
+              reject("Failed to create access token. Please request a new one.");
           }
-
-
         });
     });
 
@@ -50,23 +47,23 @@ static  createTransporter = async () => {
     return transporter;
 };
 
-static sendEmail = async (dateString,emailpipeline) => {
+static sendEmail = async (dateString, emailpipeline) => {
     let emailTransporter = await WCARGMailer.createTransporter();
-    let fechaOriginal = dateString ;
-    let stringFecha  = dateString.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
+    let dateStart = dateString ;
+    let formattedDateString  = dateString.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
 
-    let emailto= emailpipeline;
+    let mailto = emailpipeline;
 
-    console.log(emailto);
+    console.log(mailto);
 
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",
-        text: "Reporte de Accesibilidad Web con fecha  "  + fechaOriginal,
-        to: emailto,
+        text: "Reporte de Accesibilidad Web con fecha  "  + dateStart,
+        to: mailto,
         from: process.env.EMAIL,
         attachments: [{
-            filename: 'reporte-accesibilidad-'+stringFecha+'.pdf',
-            path: './reporter-results/wcarg-report-'+stringFecha+'.pdf',
+            filename: 'reporte-accesibilidad-'+formattedDateString+'.pdf',
+            path: './reporter-results/wcarg-report-'+formattedDateString+'.pdf',
             contentType: 'application/pdf'
         }],
     });

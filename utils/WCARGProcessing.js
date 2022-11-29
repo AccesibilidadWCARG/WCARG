@@ -16,14 +16,13 @@ class WCARGProcessing {
 
         results.issues.forEach(element => {
 
-            //Aeliminar las WCARGOption y usar string WCARGA y WCARGAA
             let code = option === WCARGOptions.A ? element.code.substring(0, 36) : element.code.substring(0, 37);
             let wcagCode = wcag.containsWcag(code)
-            let nivel;
-            let principio;
-            let criterio;
-            let tecnica;
-            let pauta;
+            let level;
+            let principle;
+            let standard;
+            let technique;
+            let guideline;
 
             if (wcagCode) {
                 error.push(element.code);
@@ -31,20 +30,19 @@ class WCARGProcessing {
                 let errorSplit = element.code.split(".")
 
                 if (errorSplit[0] === "WCAG2AA" ){
-                    nivel = "| Nivel: AA |";
+                    level = "| Nivel: AA |";
                 }else {
-                    nivel = "| Nivel: A |";
+                    level = "| Nivel: A |";
                 }
 
+                principle = errorSplit[1].replace("Principle", " | Principio: ");
+                guideline = errorSplit[2].replace("Guideline", " | Pauta: ");
+                standard = " | Criterio: " + errorSplit[3];
+                technique = " | Técnica: " ;
 
-                principio = errorSplit[1].replace("Principle", " | Principio: ");
-                pauta = errorSplit[2].replace("Guideline", " | Pauta: ");
-                criterio = " | Criterio: " + errorSplit[3];
-                tecnica = " | Técnica: " ;
                 for (let x = 4 ; x < errorSplit.length;x++){
-                    tecnica = tecnica + errorSplit[x];
+                    technique = technique + errorSplit[x];
                 }
-
 
                 let messageString = errorMessagesUtil.getErrorMessageByErrorCode(element.code,element.message);
 
@@ -63,13 +61,12 @@ class WCARGProcessing {
                     message:messageString,
                     context: element.context,
                     selector: element.selector,
-                    nivel:nivel,
-                    principio:principio,
-                    pauta:pauta,
-                    criterio:criterio,
-                    tecnica:tecnica
+                    level:level,
+                    principle:principle,
+                    guideline:guideline,
+                    standard:standard,
+                    technique:technique
                 }
-
                 errorMessages.push(message);
             }
         });
