@@ -27,7 +27,7 @@ static  createTransporter = async () => {
               resolve(token);
           }
           catch (e){
-              reject("Failed to create access token. Please request a new one.");
+              console.error(e)
           }
         });
     });
@@ -53,8 +53,6 @@ static sendEmail = async (dateString, emailpipeline) => {
     let formattedDateString  = dateString.replaceAll("/","_").replaceAll(" ","_").replaceAll(":","_")
 
     let mailto = emailpipeline;
-
-    console.log(mailto);
 
     await emailTransporter.sendMail({
         subject: "WCARG | Resultados de Accesibilidad Web",

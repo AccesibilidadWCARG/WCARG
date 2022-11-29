@@ -40,7 +40,6 @@ class WCARGReportGenerator {
        await  WCARGpdf.
         create(document, WCARGReportGenerator.options)
             .then((res) => {
-                console.log(res);
                 isOk =true;
             })
             .catch((error) => {
