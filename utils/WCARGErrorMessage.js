@@ -172,7 +172,7 @@ class WCARGErrorMessage {
         ["WCAG2AA.Principle2.Guideline2_4.2_4_7.G149,G165,G195,C15,SCR31", "Verifique que haya al menos un modo de operación donde el indicador de enfoque del teclado pueda ubicarse visualmente en los controles de la interfaz de usuario."],
 
         //3_1_1
-        ["WCAG2A.Principle3.Guideline3_1.3_1_1.H57.2", "El elemento html debe tener un atributo lang o xml:lang que describa el idioma del documento."],
+        ["WCAG2A.Principle3.Guideline3_1.3_1_1.H57.2", "El elemento html debe tener un atributo 'lang' o 'xml:lang' (por ejemplo, <html lang='es'>), cuyo valor representa y describe el idioma principal del documento."],
         ["WCAG2A.Principle3.Guideline3_1.3_1_1.H57.3.Lang", "El idioma especificado en el atributo lang del elemento del documento no parece estar bien formado."],
         ["WCAG2A.Principle3.Guideline3_1.3_1_1.H57.3.XmlLang", "El idioma especificado en el atributo xml:lang del elemento del documento no parece estar bien formado."],
 
