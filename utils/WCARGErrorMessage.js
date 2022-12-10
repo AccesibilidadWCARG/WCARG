@@ -152,7 +152,7 @@ class WCARGErrorMessage {
         //2_4_2
         ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.NoHeadEl", "No hay sección de cabecera en la que colocar un elemento de título descriptivo."],
         ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl", "Se debe proporcionar un título para el documento, utilizando un elemento de título no vacío en la sección de encabezado."],
-        ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.EmptyTitle", "El elemento de título en la sección principal no debe estar vacío."],
+        ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.EmptyTitle", "El elemento <title>, utilizado para definir el título del documento, es obligatorio y no debe estar vacío."],
         ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.2", "Compruebe que el elemento del título describe el documento."],
         //2_4_3
         ["WCAG2A.Principle2.Guideline2_4.2_4_3.H4.2", "Si se usa tabindex, verifique que el orden de tabulación especificado por los atributos de tabindex siga las relaciones en el contenido."],
