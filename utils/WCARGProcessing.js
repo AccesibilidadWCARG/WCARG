@@ -26,7 +26,6 @@ class WCARGProcessing {
 
             if (wcagCode) {
                 error.push(element.code);
-
                 let errorSplit = element.code.split(".")
 
                 if (errorSplit[0] === "WCAG2AA" ){
@@ -76,24 +75,7 @@ class WCARGProcessing {
         WCARGProcessing.processWCAGAResults(results[0], selectedErrors, errorMessages, WCARGOptions.A);
         WCARGProcessing.processWCAGAAResults(results[1], selectedErrors, errorMessages, WCARGOptions.AA);
 
-        return WCARGProcessing.filterMessages(selectedErrors, errorMessages);
-    }
-
-    static filterMessages(errorMessages, errorMessagesByError) {
-
-        errorMessages = errorMessages.filter((value, index, self) =>
-                index === self.findIndex((t) => (
-                    t.context === value.context && t.selector === value.selector
-                ))
-        )
-
-        errorMessagesByError = errorMessagesByError.filter((value, index, self) =>
-                index === self.findIndex((t) => (
-                    t.context === value.context && t.selector === value.selector
-                ))
-        )
-
-        return [errorMessages,errorMessagesByError]
+        return [selectedErrors, errorMessages];
     }
 }
 
