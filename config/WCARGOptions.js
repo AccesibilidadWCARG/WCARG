@@ -4,7 +4,7 @@ class WCARGOptions {
         standard: 'WCAG2AA',
         includeNotices: false,
         includeWarnings: false,
-        wait: 60000,
+        wait: 3000,
         log: {
             debug: console.log,
             error: console.error,
@@ -16,7 +16,7 @@ class WCARGOptions {
         standard: 'WCAG2A',
         includeNotices: false,
         includeWarnings: false,
-        wait: 60000,
+        wait: 3000,
         log: {
             debug: console.log,
             error: console.error,
