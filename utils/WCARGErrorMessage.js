@@ -152,7 +152,7 @@ class WCARGErrorMessage {
         //2_4_2
         ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.NoHeadEl", "No hay sección de cabecera en la que colocar un elemento de título descriptivo."],
         ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl", "Se debe proporcionar un título para el documento, utilizando un elemento de título no vacío en la sección de encabezado."],
-        ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.EmptyTitle", "El elemento <title>, utilizado para definir el título del documento, es obligatorio y no debe estar vacío."],
+        ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.1.EmptyTitle", "El elemento <title>, utilizado para definir el título del documento, es obligatorio y no debe estar vacío. Por ejemplo, <title>WCARG Accesibilidad</title>"],
         ["WCAG2A.Principle2.Guideline2_4.2_4_2.H25.2", "Compruebe que el elemento del título describe el documento."],
         //2_4_3
         ["WCAG2A.Principle2.Guideline2_4.2_4_3.H4.2", "Si se usa tabindex, verifique que el orden de tabulación especificado por los atributos de tabindex siga las relaciones en el contenido."],
@@ -220,9 +220,10 @@ class WCARGErrorMessage {
         ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.Button.Name", "Este elemento tiene la función de \"botón\" pero no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: título indefinido, contenido del elemento, aria-label indefinido, aria-labelledby indefinido"],
         ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.Div.Name", "Este elemento tiene la función de \"botón\" pero no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: contenido del elemento, aria-label indefinido, aria-labeledby indefinido."],
         ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.Fieldset.Name", "Este elemento fieldset no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: elemento de leyenda, aria-label indefinido, aria-labeledby indefinido."],
-        ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.InputEmail.Name", "Este elemento de entrada de correo electrónico no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: elemento de etiqueta, título indefinido, aria-label indefinido, aria-labeledby indefinido."],
+        ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.InputEmail.Name", "Este elemento de entrada de correo electrónico no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: elemento label, title indefinido, aria-label indefinido, aria-labeledby indefinido."],
         ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.InputText.Name", "Este elemento de entrada de texto no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: elemento de etiqueta, título indefinido, aria-label indefinido, aria-labeledby indefinido."],
-        ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.A.Name", "Este elemento tiene la función de \"botón\" pero no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: contenido del elemento, aria-label indefinido, aria-labeledby indefinido."]
+        ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.A.Name", "Este elemento tiene la función de \"botón\" pero no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: contenido del elemento, aria-label indefinido, aria-labeledby indefinido."],
+        ["WCAG2A.Principle4.Guideline4_1.4_1_2.H91.Select.Name", "Este elemento de entrada de correo electrónico no tiene un nombre disponible para una API de accesibilidad. Los nombres válidos son: elemento label, title indefinido, aria-label indefinido, aria-labeledby indefinido."]
     ]);
 
     static getErrorMessageByErrorCode(errorCode, originalMessage) {
